@@ -59,24 +59,24 @@
                 })
                 .then(() => bleServer.getPrimaryService(uiServicesUUID))
                 .then(service => {
-                    log('Found UI service', service);
+                    console.log('Found UI service', service);
                     uiService = service;
                 })
                 .then(() => uiService.getCharacteristic(buttonCharacteristicUUID))
                 .then(characteristic => {
-                    log('Found button characteristic');
+                    console.log('Found button characteristic');
                     buttonchar = characteristic;
                     return buttonchar.startNotifications();
                 })
                 .then(() => {
-                    log('Notifications from button enabled');
+                    console.log('Notifications from button enabled');
                     buttonchar.addEventListener('characteristicvaluechanged', handleNotifyButton);
                 })
                 .then(() => {
                     console.log('=========== READY ===========');
                 })
                 .catch(error => {
-                    log('Connection Error: ' + error);
+                    console.log('Connection Error: ' + error);
                 });
         }
         function disconnect() {
@@ -84,7 +84,7 @@
                 console.log('No Bluetooth Device found...');
                 return;
             }
-            log('Disconnecting from Bluetooth Device...');
+            console.log('Disconnecting from Bluetooth Device...');
             if (bleDevice.gatt.connected) {
                 bleDevice.gatt.disconnect();
                 log('Bluetooth Device connected: ' + bleDevice.gatt.connected);
