@@ -32,8 +32,8 @@
             if (!navigator.bluetooth) {
                 return log('Web Bluetooth API is not available in browser.');
             }
-            log('=============================');
-            log('Requesting Bluetooth Device...');
+            console.log('=============================');
+            console.log('Requesting Bluetooth Device...');
             // RequestDevice must be in click handler (or other user inited events)
             navigator.bluetooth.requestDevice({
                     filters: [{
@@ -50,12 +50,12 @@
                         UUIDs: device.uuids,
                         Device: device
                     });
-                    log('Connected to device: ' + device.name);
+                    console.log('Connected to device: ' + device.name);
                     return device.gatt.connect();
                 })
                 .then(server => {
                     bleServer = server;
-                    log('Found Server', server);
+                    console.log('Found Server', server);
                 })
                 .then(() => bleServer.getPrimaryService(uiServicesUUID))
                 .then(service => {
@@ -73,7 +73,7 @@
                     buttonchar.addEventListener('characteristicvaluechanged', handleNotifyButton);
                 })
                 .then(() => {
-                    log('=========== READY ===========');
+                    console.log('=========== READY ===========');
                 })
                 .catch(error => {
                     log('Connection Error: ' + error);
@@ -81,7 +81,7 @@
         }
         function disconnect() {
             if (!bleDevice) {
-                log('No Bluetooth Device found...');
+                console.log('No Bluetooth Device found...');
                 return;
             }
             log('Disconnecting from Bluetooth Device...');
@@ -89,7 +89,7 @@
                 bleDevice.gatt.disconnect();
                 log('Bluetooth Device connected: ' + bleDevice.gatt.connected);
             } else {
-                log('Bluetooth Device is already disconnected');
+                console.log('Bluetooth Device is already disconnected');
             }
         }
         function handleNotifyButton(event) {
