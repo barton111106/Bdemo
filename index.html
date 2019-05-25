@@ -51,7 +51,7 @@
                         Device: device
                     });
                     console.log('Connected to device: ' + device.name);
-                    return device.gatt.connect();
+                    device.gatt.connect();
                 })
                 .then(server => {
                     bleServer = server;
