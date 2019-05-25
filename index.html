@@ -42,17 +42,17 @@
                         //"name": "Thingy"
                     }]
                 })
-                .then(device => {
-                    bleDevice = device;
-                    console.log({
-                        Name: device.name,
-                        Id: device.id,
-                        UUIDs: device.uuids,
-                        Device: device
-                    });
+                .then(device => device.gatt.connect())
+                    //bleDevice = device;
+                    //console.log({
+                       // Name: device.name,
+                       // Id: device.id,
+                      //  UUIDs: device.uuids,
+                    //    Device: device
+                   // });
                     console.log('Connected to device: ' + device.name);
-                    bleDevice.gatt.connect();
-                })
+                   // bleDevice.gatt.connect();
+                //})
                 .then(server => {
                     bleServer = server;
                     console.log('Found Server', server);
