@@ -16,8 +16,9 @@
             "ef680500-9b35-4933-9b10-52ffa9740042"
         ];
         //UI
+       // const uiServicesUUID = 'ef680300-9b35-4933-9b10-52ffa9740042';
         const uiServicesUUID = 'ef680300-9b35-4933-9b10-52ffa9740042';
-        const buttonCharacteristicUUID = 'ef680302-9b35-4933-9b10-52ffa9740042';
+        const buttonChaUUID  = 'ef680302-9b35-4933-9b10-52ffa9740042';
         const ledCharacteristicUUID = 'ef680301-9b35-4933-9b10-52ffa9740042';
         var bleDevice;
         var bleServer;
@@ -61,7 +62,7 @@
                 .then(service => {
                     console.log('Found UI service', service);
                     uiService = service;
-                    uiService.getCharacteristic(buttonCharacteristicUUID);
+                    uiService.getCharacteristic(buttonChaUUID);
                 })
                 .then(characteristic => {
                     console.log('Found button characteristic');
