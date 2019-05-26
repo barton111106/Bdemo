@@ -57,7 +57,7 @@
                 .then(server => {
                     bleServer = server;
                     console.log('Found Server', server);
-                    bleServer.getPrimaryService(uiServicesUUID);
+                    return bleServer.getPrimaryService(uiServicesUUID);
                 })
                 .then(service => {
                     console.log('Found UI service', service);
