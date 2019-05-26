@@ -60,17 +60,17 @@
                     return bleServer.getPrimaryService(uiServicesUUID);
                 })
                 .then(service => {
-                    console.log('Found UI service', service);
+                    log('Found UI service', service);
                     uiService = service;
                     return uiService.getCharacteristic(buttonChaUUID);
                 })
                 .then(characteristic => {
-                    console.log('Found button characteristic');
+                    log('Found button characteristic');
                     buttonchar = characteristic;
                     return buttonchar.startNotifications();
                 })
                 .then(() => {
-                    console.log('Notifications from button enabled');
+                    log('Notifications from button enabled');
                     buttonchar.addEventListener('characteristicvaluechanged', handleNotifyButton);
                 })
                 .then(() => {
