@@ -62,7 +62,7 @@
                 .then(service => {
                     console.log('Found UI service', service);
                     uiService = service;
-                    uiService.getCharacteristic(buttonChaUUID);
+                    return uiService.getCharacteristic(buttonChaUUID);
                 })
                 .then(characteristic => {
                     console.log('Found button characteristic');
